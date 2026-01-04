@@ -1,0 +1,10 @@
+FROM alpine:3.22.2
+
+RUN apk update &&                                                                         \
+    apk add python3 vim nano emacs-nox bat strace mandoc man-pages man-pages-posix &&     \
+    apk add oils-for-unix --repository https://dl-cdn.alpinelinux.org/alpine/edge/testing
+
+WORKDIR /path-traversal
+COPY driver.py traverse.py test.sh entry.sh .
+
+CMD ["/path-traversal/entry.sh"]
