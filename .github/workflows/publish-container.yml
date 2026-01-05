@@ -1,0 +1,34 @@
+name: Publish Containers
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REG_USER: ${{ github.actor }}
+  REG_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  IMAGE_ID: ghcr.io/possiblyashrub/path-traversal
+  IMAGE_NAME: path-traversal
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build
+        run: |
+          export LABEL="runnumber=$GITHUB_RUN_ID"
+          ./container.sh build
+
+      - name: Login to ghcr
+        run: ./container.sh login
+
+      - name: Push
+        run: ./container.sh push
