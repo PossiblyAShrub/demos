@@ -5,6 +5,6 @@ RUN apk update &&                                                               
     apk add oils-for-unix --repository https://dl-cdn.alpinelinux.org/alpine/edge/testing
 
 WORKDIR /path-traversal
-COPY driver.py traverse.py test.sh entry.sh .
+COPY driver.py traverse.py test.ysh entry.ysh .
 
-CMD ["/path-traversal/entry.sh"]
+CMD ["/path-traversal/entry.ysh"]

@@ -26,7 +26,7 @@ proc welcome() {
     2. Run tests with the ./test.ysh shell script
 
     ```sh
-        ./test.sh --help  # To see the options
+        ./test.ysh --help  # To see the options
     ```
 
     When you are done with the tutorial, close your editor and press CTRL+D (also
